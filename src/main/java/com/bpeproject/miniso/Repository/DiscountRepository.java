@@ -13,6 +13,6 @@ public interface DiscountRepository extends JpaRepository<Discount, Long> {
     @Query(value = "SELECT * from Discount", nativeQuery = true)
     public List<Discount> getAll();
 
-    @Query(value = "SELECT d.* from Discount d where d.code LIKE '%:code%'", nativeQuery = true)
+    @Query(value = "SELECT d.* from Discount d where d.code LIKE %:code%", nativeQuery = true)
     public List<Discount> getByCode(@Param("code") String code);
 }
