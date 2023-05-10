@@ -24,7 +24,7 @@ public class Discount {
     private String code;
 
     @Column(name = "amount", nullable = false)
-    private float amount;
+    private double amount;
 
     @Column(name = "quantity", nullable = false)
     private int quantity;
@@ -36,14 +36,14 @@ public class Discount {
     public Discount() {
     }
 
-    public Discount(String code, float amount, int quantity, Date validity) {
+    public Discount(String code, double amount, int quantity, Date validity) {
         this.code = code;
         this.amount = amount;
         this.quantity = quantity;
         this.validity = validity;
     }
 
-    public Discount(Long id, String code, float amount, int quantity, Date validity) {
+    public Discount(Long id, String code, double amount, int quantity, Date validity) {
         this.id = id;
         this.code = code;
         this.amount = amount;
@@ -67,11 +67,11 @@ public class Discount {
         this.code = code;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
