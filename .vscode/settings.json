@@ -1,5 +1,9 @@
 {
   "java.configuration.updateBuildConfiguration": "interactive",
   "liveServer.settings.port": 5501,
-  "java.compile.nullAnalysis.mode": "automatic"
+  "java.compile.nullAnalysis.mode": "automatic",
+  "cSpell.words": [
+    "bpeproject",
+    "miniso"
+  ]
 }
