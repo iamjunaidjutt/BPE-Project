@@ -45,9 +45,11 @@ public class AppController {
         discountService.getByCode(code);
 
         List<Discount> discount = discountService.getByCode(code);
-        System.out.println("Size : " + discount.size());
+        // System.out.println("Size : " + discount.size());
         model.addAttribute("discount", discount);
 
         return "discount_apply.html";
     }
+
+    @GetMapping("/")
 }
