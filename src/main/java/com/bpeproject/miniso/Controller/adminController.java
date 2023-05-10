@@ -11,7 +11,7 @@ import com.bpeproject.miniso.Entity.DailySale;
 import com.bpeproject.miniso.Service.DailySaleService;
 
 @Controller
-public class adminController {
+public class AdminController {
     
     @Autowired
     DailySaleService dailySaleService;
@@ -30,8 +30,6 @@ public class adminController {
         dailySale.setAvgTransactionValue(avgTval);
 
         dailySaleService.addDailySale(dailySale);
-
-        
         return "dailyEntry";
     }
 }
