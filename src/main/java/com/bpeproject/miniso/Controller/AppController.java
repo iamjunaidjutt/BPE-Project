@@ -65,8 +65,10 @@ public class AppController {
         return "discount_apply.html";
     }
 
-    @GetMapping("/applydiscount")
-    public String applyDiscount(Model model) {
+    @GetMapping("/applydiscount{id}")
+    public String applyDiscount(@PathVariable("id") Long id, Model model) {
+
+        System.out.println("id : " + id);
 
         return "";
     }
