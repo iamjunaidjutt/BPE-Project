@@ -31,12 +31,19 @@ public class AppController {
     @GetMapping("/startdiscount")
     public String getCustomerInfo(Model model) {
 
+        this.currentInvoice = null;
+        this.currentCustomer = null;
+
         return "getCustomerInfo.html";
     }
 
     @GetMapping("/discountprogram")
     public String displayDiscountProgram(@RequestParam("name") String name,
             @RequestParam("phoneNumber") String phoneNumber, @RequestParam("invoice") Long invoice, Model model) {
+
+        System.out.println("phoneNumber : " + phoneNumber);
+        System.out.println("Name : " + name);
+        System.out.println("invoice : " + invoice);
 
         this.currentCustomer = new Customer(name, phoneNumber);
 
@@ -78,6 +85,21 @@ public class AppController {
 
         // invoiceService.update(currentInvoice);
 
-        return "";
+        return "discount_success.html";
+    }
+
+    @GetMapping("/rejectDiscount")
+    public String stopDiscountProcess(Model model) {
+
+        return "discount_reject.html";
+    }
+
+    @GetMapping("/generateInvoice")
+    public String invoiceGenerate(Model model) {
+
+        model.addAttribute("customer", currentCustomer);
+        model.addAttribute("invoice", currentInvoice);
+
+        return "invoice_display.html";
     }
 }

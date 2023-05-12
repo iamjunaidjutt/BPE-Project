@@ -23,6 +23,6 @@ public interface DiscountRepository extends JpaRepository<Discount, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE Discount d SET quantity = :quantity where id = :id", nativeQuery = true)
-    public void updateQuantityById(@Param("id") Long id, @Param("quantity") int quantity);
+    @Query(value = "UPDATE Discount SET quantity = :quantity where id = :id", nativeQuery = true)
+    public int updateQuantityById(@Param("id") Long id, @Param("quantity") int quantity);
 }

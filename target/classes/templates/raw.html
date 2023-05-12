@@ -12,58 +12,48 @@
       crossorigin="anonymous"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $("body").on("click", "a.disabled", function (event) {
-          event.preventDefault();
-        });
-      });
-    </script>
   </head>
   <body>
     <body>
-      <form th:action="@{/searchCode}" method="GET">
+      <form th:action="@{/discountprogram}" method="GET">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Enter Code</label>
+          <label for="exampleInputEmail1" class="form-label"
+            >Enter Customer Name</label
+          >
           <input
             type="text"
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            th:name="code"
+            th:name="name"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Enter Customer Phone Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            th:name="phoneNumber"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Enter Invoice ID</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            th:name="invoice"
           />
         </div>
         <button type="submit" class="myBtn">Search</button>
       </form>
-      <h1>All discount codes</h1>
-      <table class="table table-striped table-hover">
-        <thead>
-          <th>Code</th>
-          <th>Discount Amount</th>
-          <th>Quantity Left</th>
-          <th>Validity</th>
-          <th>Action</th>
-        </thead>
-        <tbody>
-          <tr th:each="discount : ${discount}">
-            <td th:text="${discount.code}"></td>
-            <td th:text="${discount.amount}"></td>
-            <td th:text="${discount.quantity}"></td>
-            <td
-              th:text="${#dates.format(discount.validity, 'yyyy-MM-dd')}"
-            ></td>
-            <td>
-              <a
-                th:class="${discount.quantity == 0} ? 'disabled' : ''"
-                th:style="${discount.quantity == 0} ? 'color: red;' : 'color: blue;'"
-                th:href="@{/discount/apply{id}(id=${discount.id})}"
-              >
-                Apply
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </body>
   </body>
 </html>
