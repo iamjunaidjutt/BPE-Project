@@ -27,4 +27,12 @@ public class DiscountService {
     public List<Discount> getByCode(String code) {
         return discountRepository.getByCode(code);
     }
+
+    public Discount getById(Long id) {
+        return discountRepository.getByIdR(id);
+    }
+
+    public void update(Discount d) {
+        discountRepository.updateQuantityById(d.getId(), d.getQuantity());
+    }
 }

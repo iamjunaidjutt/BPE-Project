@@ -65,5 +65,19 @@ public class AppController {
         return "discount_apply.html";
     }
 
-    @GetMapping("/")
+    @GetMapping("/applydiscount{id}")
+    public String applyDiscount(@PathVariable("id") Long id, Model model) {
+
+        Discount myDiscount = discountService.getById(id);
+
+        currentInvoice.reCalculate(myDiscount);
+
+        myDiscount.setAmount(myDiscount.getAmount() - 1);
+
+        discountService.update(myDiscount);
+
+        // invoiceService.update(currentInvoice);
+
+        return "";
+    }
 }

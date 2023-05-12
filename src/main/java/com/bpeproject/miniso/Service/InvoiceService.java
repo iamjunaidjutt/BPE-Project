@@ -21,4 +21,9 @@ public class InvoiceService {
     public Invoice getById(Long id) {
         return invoiceRepository.getByIdR(id);
     }
+
+    public void update(Invoice invoice) {
+        invoiceRepository.updateR(invoice.getId(), invoice.getDiscountCode(), invoice.getDiscount(),
+                invoice.getTotalWithDiscount(), invoice.getTotalWithGST());
+    }
 }
