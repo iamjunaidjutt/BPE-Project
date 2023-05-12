@@ -79,34 +79,34 @@
                 </div>
                 <button type="submit" class="myBtn">Submit</button>
             </form>
-            <table class="table table-striped">
+            <h3 class="text-white"> Values Recorded</h3>
+            <table class="table table-striped text-white">
                 <thead>
-    
-                    <h3> Values Recorded</h3>
-                    <h5 th:text="${dailySale.date}">date</h5>
+                    <tr>
+                        <th th:text="${dailySale.date}">date</th>
+                    </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <th scope="row" class="text-white">Number of Customers</th>
+                        <td th:text="${dailySale.numOfCustomers}" class="text-white">0</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-white">Total Sales</th>
+                        <td th:text="${dailySale.totalSales}" class="text-white"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-white">Total Sales without GST</th>
+                        <td th:text="${dailySale.totalSalesWoGST}" class="text-white"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-white">Total Products Sold</th>
+                        <td th:text="${dailySale.totalProducts}" class="text-white"></td>
+                    </tr>
     
                     <tr>
-                        <th scope="row">Number of Customers</th>
-                        <td th:text="${dailySale.numOfCustomers}">0</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Total Sales</th>
-                        <td th:text="${dailySale.totalSales}"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Total Sales without GST</th>
-                        <td th:text="${dailySale.totalSalesWoGST}"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Total Products Sold</th>
-                        <td th:text="${dailySale.totalProducts}"></td>
-                    </tr>
-    
-                    <tr>
-                        <th scope="row">Average Transaction Value</th>
-                        <td th:text="${dailySale.avgTransactionValue}"></td>
+                        <th scope="row" class="text-white">Average Transaction Value</th>
+                        <td th:text="${dailySale.avgTransactionValue}" class="text-white"></td>
                     </tr>
                 </tbody>
             </table>

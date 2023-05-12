@@ -51,9 +51,9 @@
         </div>
     </nav>
     <main class="container nav-margin">
-        <section class="w-75 mx-auto">
+        <section class="w-75 mx-auto text-white">
 
-            <form th:action="@{/view-sales}" method="post" class="text-black my-4">
+            <form th:action="@{/view-sales}" method="post" class="text-white my-4">
                 <form th:action="@{/view-sales}" method="post">
 
                     <label for="startDate">Start Date:</label>
@@ -80,11 +80,11 @@
                 </form>
 
 
-                <div style="margin-top: 70px;" th:if="${datesSelected}" class="graph-container">
+                <div style="margin-top: 70px;" th:if="${datesSelected}" class="graph-container text-white">
                     <img th:src="@{/view-sales/intervalRevenue}" alt="Interval Revenue Graph" />
                 </div>
-                <table class="table table-bordered table-striped" th:if="${datesSelected}">
-                    <thead>
+                <table class="table table-bordered table-striped text-white" th:if="${datesSelected}">
+                    <thead class="text-white">
                         <tr>
                             <th>Interval</th>
                             <th>Revenue</th>
@@ -92,7 +92,7 @@
                             <th>% Change From Base (<span th:text="${intervalStats[0][0]}"></span>) </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-white">
                         <tr th:each="stat, statIndex : ${intervalStats}">
                             <td th:if="${interval} == 'daily'" th:text="${stat[0]}"></td>
                             <td th:if="${interval} == 'daily'" th:text="${stat[1]}"></td>
