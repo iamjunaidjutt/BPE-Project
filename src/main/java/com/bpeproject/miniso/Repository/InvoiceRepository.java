@@ -15,5 +15,5 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
     @Transactional
     @Modifying
     @Query(value = "UPDATE Invoice SET discountCode = ?2, discount = ?3, totalWithDiscount = ?4, totalWithGST = ?5 where id = ?1", nativeQuery = true)
-    public void updateR(Long id, String code, double discount, double totalWithDiscount, double totalWithGST);
+    public int updateR(Long id, String code, double discount, double totalWithDiscount, double totalWithGST);
 }
