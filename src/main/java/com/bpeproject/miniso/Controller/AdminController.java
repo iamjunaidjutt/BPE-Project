@@ -2,6 +2,7 @@ package com.bpeproject.miniso.Controller;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.util.Date;
 import java.util.List;
 
 import org.jfree.chart.ChartFactory;
@@ -90,16 +91,27 @@ public class AdminController {
         }
 
         List<Object[]> intervalStats = dailySaleService.getSalesBetweenDates(interval, startDate, endDate);
+        List<Integer> pcChanges = dailySaleService.pcChanges(intervalStats);
+        List<Integer> pcBaseChanges = dailySaleService.pcBaseChanges(intervalStats);
 
         // Store the revenue data in the session
         session.setAttribute("intervalStats", intervalStats);
+        session.setAttribute("pcStats", pcChanges);
+        session.setAttribute("pcBaseStats", pcBaseChanges);
         // session.setAttribute("mostPopularData", mostPopularList);
         // session.setAttribute("leastPopularData", leastPopularList);
 
         model.addAttribute("datesSelected", true);
         model.addAttribute("intervalStats", intervalStats);
+        model.addAttribute("pcStats", pcChanges);
+        model.addAttribute("pcBaseStats", pcBaseChanges);
         model.addAttribute("interval", interval);
         session.setAttribute("interval", interval);
+
+        model.addAttribute("startDate", startDate);
+model.addAttribute("endDate", endDate);
+
+
         // model.addAttribute("mostPopularList", mostPopularList);
         // model.addAttribute("leastPopularList", leastPopularList);
 
@@ -125,7 +137,16 @@ public class AdminController {
                 Number revenue = (Number) data[1];
                 dataset.addValue(revenue.doubleValue(), "Revenue", day);
             }
-        } else if (intervalSelected.equals("monthly")) {
+        } 
+        else if (intervalSelected.equals("weekly")) {
+            for (Object[] data : intervalStats) {
+                String weekStart = ((Date) data[0]).toString();  // Assuming data[1] is a java.util.Date
+                Number revenue = (Number) data[1];  // the sum of sales is the first element
+                dataset.addValue(revenue.doubleValue(), "Revenue", weekStart);
+            }
+        }
+        
+        else if (intervalSelected.equals("monthly")) {
             for (Object[] data : intervalStats) {
                 String month = data[0].toString() + "/" + data[1].toString();
                 Number revenue = (Number) data[2];
@@ -138,37 +159,6 @@ public class AdminController {
                 dataset.addValue(revenue.doubleValue(), "Revenue", year);
             }
         }
-        // switch (interval.toLowerCase()) {
-        // case "daily":
-        // for (Object[] data : intervalStats) {
-        // String day = data[0].toString();
-        // Number revenue = (Number) data[1];
-        // dataset.addValue(revenue.doubleValue(), "Revenue", day);
-        // }
-        // break;
-        // case "monthly":
-        // for (Object[] data : intervalStats) {
-        // String month = data[0].toString() + "/" + data[1].toString();
-        // Number revenue = (Number) data[2];
-        // dataset.addValue(revenue.doubleValue(), "Revenue", month);
-        // }
-        // break;
-        // case "yearly":
-        // for (Object[] data : intervalStats) {
-        // String year = data[0].toString();
-        // Number revenue = (Number) data[1];
-        // dataset.addValue(revenue.doubleValue(), "Revenue", year);
-        // }
-        // break;
-        // default:
-        // interval = "daily";
-        // for (Object[] data : intervalStats) {
-        // String day = data[0].toString();
-        // Number revenue = (Number) data[1];
-        // dataset.addValue(revenue.doubleValue(), "Revenue", day);
-        // }
-        // throw new IllegalArgumentException("Invalid interval: " + interval);
-        // }
 
         // Create a bar chart using the dataset
         JFreeChart chart = ChartFactory.createBarChart("Revenue Graph", "Time", "Revenue(PKR)", dataset);
