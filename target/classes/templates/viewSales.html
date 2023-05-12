@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary myBg-light fixed-top shadow">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary myBg-light fixed-top shadow">
         <div class="container">
             <a class="navbar-brand me-5" href="./home.html">
                 <div class="d-flex">
@@ -49,19 +49,19 @@
                 </ul>
             </div>
         </div>
-    </nav> -->
+    </nav>
     <main class="container nav-margin">
         <section class="w-75 mx-auto">
-           
+
             <form th:action="@{/view-sales}" method="post" class="text-black my-4">
-                <form th:action="@{/view-sales}" method="post" >
-                
+                <form th:action="@{/view-sales}" method="post">
+
                     <label for="startDate">Start Date:</label>
-                    <input type="date" id="startDate" name="startDate" required>
-                
+                    <input type="date" id="startDate" name="startDate" th:value="${startDate}" required>
+
                     <label for="endDate">End Date:</label>
-                    <input type="date" id="endDate" name="endDate" required>
-                
+                    <input type="date" id="endDate" name="endDate" th:value="${endDate}" required>
+
                     <div>
                         <p>Interval:</p>
                         <input type="radio" id="daily" name="interval" value="daily" required>
@@ -73,42 +73,50 @@
                         <input type="radio" id="yearly" name="interval" value="yearly">
                         <label for="yearly">Yearly</label>
                     </div>
-                
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a href="#" th:href="@{/admin/view-graphs}" class="btn btn-secondary">Reset</a>
-                
+
                 </form>
+
+
+                <div style="margin-top: 70px;" th:if="${datesSelected}" class="graph-container">
+                    <img th:src="@{/view-sales/intervalRevenue}" alt="Interval Revenue Graph" />
+                </div>
+                <table class="table table-bordered table-striped" th:if="${datesSelected}">
+                    <thead>
+                        <tr>
+                            <th>Interval</th>
+                            <th>Revenue</th>
+                            <th>% Change</th>
+                            <th>% Change From Base (<span th:text="${intervalStats[0][0]}"></span>) </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="stat, statIndex : ${intervalStats}">
+                            <td th:if="${interval} == 'daily'" th:text="${stat[0]}"></td>
+                            <td th:if="${interval} == 'daily'" th:text="${stat[1]}"></td>
+
+                            <td th:if="${interval} == 'weekly'" th:text="${stat[0]}"></td>
+                            <td th:if="${interval} == 'weekly'" th:text="${stat[1]}"></td>
                 
-            
-            <div style="margin-top: 70px;" th:if="${datesSelected}" class="graph-container">
-                <img th:src="@{/view-sales/intervalRevenue}" alt="Interval Revenue Graph" />
-            </div>
-            <table class="table table-bordered table-striped" th:if="${datesSelected}">
-    <thead>
-        <tr>
-            <th>Interval</th>
-            <th>Revenue</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="stat : ${intervalStats}" >
-            <td th:if="${interval} == 'daily'" th:text="${stat[0]}"></td>
-            <td  th:if="${interval} == 'daily'"  th:text="${stat[1]}"></td>
-
-            <td th:if="${interval} == 'monthly'"  th:text="${stat[0]} + '/' + ${stat[1]}"></td>
-            <td  th:if="${interval} == 'monthly'"  th:text="${stat[2]}"></td>
-
-            <td th:if="${interval} == 'yearly'"  th:text="${stat[0]}"></td>
-            <td  th:if="${interval} == 'yearly'"  th:text="${stat[1]}"></td>
-            
-        </tr>
-    </tbody>
-</table>
+                            <td th:if="${interval} == 'monthly'" th:text="${stat[0]} + '/' + ${stat[1]}"></td>
+                            <td th:if="${interval} == 'monthly'" th:text="${stat[2]}"></td>
+                
+                            <td th:if="${interval} == 'yearly'" th:text="${stat[0]}"></td>
+                            <td th:if="${interval} == 'yearly'" th:text="${stat[1]}"></td>
+                
+                            <td th:text="${pcStats[__${statIndex.index}__]}"></td>
+                            <td th:text="${pcBaseStats[__${statIndex.index}__]}"></td>
+                        </tr>
+                    </tbody>
+                </table>
 
         </section>
     </main>
 
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
     integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
