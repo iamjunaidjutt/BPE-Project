@@ -76,33 +76,46 @@
   </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary myBg-light fixed-top shadow">
-        <div class="container">
-            <a class="navbar-brand me-5" href="./home.html">
-                <div class="d-flex">
-                    <span class="myLink fw-bold fs-3 mt-2">Miniso</span>
-                </div>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
-                    <li class="nav-item mx-3">
-                        <a class="myLink active" aria-current="page" href="./dailySalesEntry.html">Daily Sales Entry</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="myLink" href="./viewSales.html">View Sales</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="myLink" href="./discountSystem.html">Discount System</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <nav
+  class="navbar navbar-expand-lg bg-body-tertiary myBg-light fixed-top shadow"
+>
+  <div class="container">
+    <a class="navbar-brand me-5" th:href="@{/startdiscount}">
+      <div class="d-flex">
+        <span class="myLink fw-bold fs-3 mt-2">Miniso</span>
+      </div>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
+        <li class="nav-item mx-3">
+          <a
+            class="myLink active"
+            aria-current="page"
+            th:href="@{/daily-entry}"
+            >Daily Sales Entry</a
+          >
+        </li>
+        <li class="nav-item mx-3">
+          <a class="myLink" th:href="@{/view-sales}">View Sales</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="myLink" th:href="@{/startdiscount}">Discount System</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
     <main class="container">
         <div class="d-flex justify-content-center align-items-center w-100 vh-100">
             <div class="text-center w-50 text-white">

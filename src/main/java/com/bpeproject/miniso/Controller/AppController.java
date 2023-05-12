@@ -79,11 +79,11 @@ public class AppController {
 
         currentInvoice.reCalculate(myDiscount);
 
-        myDiscount.setAmount(myDiscount.getAmount() - 1);
+        myDiscount.setQuantity(myDiscount.getQuantity() - 1);
 
         discountService.update(myDiscount);
 
-        // invoiceService.update(currentInvoice);
+        invoiceService.update(currentInvoice);
 
         return "discount_success.html";
     }
