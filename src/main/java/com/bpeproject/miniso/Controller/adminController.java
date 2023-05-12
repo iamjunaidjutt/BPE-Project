@@ -1,39 +1,37 @@
 // package com.bpeproject.miniso.Controller;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Controller;
-// import org.springframework.ui.Model;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.ModelAttribute;
-// import org.springframework.web.bind.annotation.PostMapping;
-
-// import com.bpeproject.miniso.Entity.DailySale;
-// import com.bpeproject.miniso.Service.DailySaleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 // @Controller
 // public class AdminController {
 
-// @Autowired
-// DailySaleService dailySaleService;
+@Controller
+public class AdminController {
+    
+    @Autowired
+    DailySaleService dailySaleService;
+    @GetMapping("/manager/daily-entry")
+    public String dailyEntryGet(Model model) {
+        model.addAttribute("dailySale", new DailySale()) ;     
+        return "dailyEntry";
+    }
+    
+    @PostMapping("/manager/daily-entry")
+    public String dailyEntryPost (@ModelAttribute("dailySale") DailySale dailySale) {
+        double saleswogst = (int)dailySale.getTotalSales()/1.17;
+        dailySale.setTotalSalesWoGST(saleswogst);
 
-// @GetMapping("/manager/daily-entry")
-// public String dailyEntryGet(Model model) {
-// model.addAttribute("dailySale", new DailySale)
-// return "dailyEntry";
-// }
+        double avgTval =(int)dailySale.getTotalSales()/dailySale.getNumOfCustomers();
+        dailySale.setAvgTransactionValue(avgTval);
 
-// @PostMapping("/manager/daily-entry")
-// public String dailyEntryPst (@ModelAttribute("dailySale") DailySale
-// dailySale) {
-// double saleswogst = (i nt)dailySale.getTotalSale s ()/1.17;
-// dailySale.setTotalSalesWoGST(saleswogst);
-
-// double avgTva l =(i nt)dailySale.getTotalSale s
-// ()/dailySale.getNumOfCustomers();
-// dailySale.setAvgTransactionValue(avgTval);
-
-// dailySaleService.addDailySale(dailySale);
-// return "dailyEntry";
-// }
+        dailySaleService.addDailySale(dailySale);
+        return "dailyEntry";
+    }
+}
 
 // }
