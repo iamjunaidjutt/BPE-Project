@@ -90,5 +90,4 @@ public class Discount {
     public void setValidity(Date validity) {
         this.validity = validity;
     }
-
 }

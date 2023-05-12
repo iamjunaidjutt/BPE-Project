@@ -101,4 +101,10 @@ public class Invoice {
         this.totalWithGST = totalWithGST;
     }
 
+    public void reCalculate(Discount d) {
+        this.discountCode = d.getCode();
+        this.discount = d.getAmount();
+        this.totalWithDiscount = total - discount;
+        this.totalWithGST = totalWithDiscount + (totalWithDiscount * 0.17);
+    }
 }

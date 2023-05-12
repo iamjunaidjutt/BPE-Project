@@ -68,7 +68,15 @@ public class AppController {
     @GetMapping("/applydiscount{id}")
     public String applyDiscount(@PathVariable("id") Long id, Model model) {
 
-        System.out.println("id : " + id);
+        Discount myDiscount = discountService.getById(id);
+
+        currentInvoice.reCalculate(myDiscount);
+
+        myDiscount.setAmount(myDiscount.getAmount() - 1);
+
+        discountService.update(myDiscount);
+
+        // invoiceService.update(currentInvoice);
 
         return "";
     }
