@@ -17,4 +17,8 @@ public class InvoiceService {
     public void save(Invoice invoice) {
         invoiceRepository.save(invoice);
     }
+
+    public Invoice getById(Long id) {
+        return invoiceRepository.getByIdR(id);
+    }
 }
