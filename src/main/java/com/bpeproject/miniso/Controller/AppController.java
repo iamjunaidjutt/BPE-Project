@@ -51,5 +51,5 @@ public class AppController {
         return "discount_apply.html";
     }
 
-    @GetMapping("/")
+    
 }

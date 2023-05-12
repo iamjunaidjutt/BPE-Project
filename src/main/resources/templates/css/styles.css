@@ -1,0 +1,140 @@
+
+/* ----------------------------- Default Styling -------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,700;1,300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--clr-choc);
+}
+
+:root {
+    --clr-blue: #0B446D;
+    --clr-blue-hover: #2280c3;
+    --clr-white: #FFFFFF;
+    --clr-light: #EFF8FF;
+    --clr-dark: #212A3E;
+    --clr-purple-light: #917FB3;
+    --clr-choc: #4D4D4D;
+    --clr-reddish: #B46060;
+    --clr-reddish-light: #f08080;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    color: inherit;
+}
+
+
+/* ----------------------------- Utilities -------------------------------- */
+
+.myBg-blue {
+    background-color: var(--clr-blue);
+}
+
+.myBg-white {
+    background-color: var(--clr-white);
+}
+
+.myBg-light {
+    background-color: var(--clr-light);
+}
+
+.myBg-choc {
+    background-color: var(--clr-choc);
+}
+
+.myBg-reddish {
+    background-color: var(--clr-reddish);
+}
+
+.myText-blue {
+    color: var(--clr-blue);
+}
+
+
+.myText-white {
+    color: var(--clr-white);
+}
+
+.myText-light {
+    color: var(--clr-light);
+}
+
+.myText-choc {
+    color: var(--clr-choc);
+}
+
+.myText-reddish {
+    color: var(--clr-reddish);
+}
+
+.myLink {
+    text-decoration: none;
+    display: inline-block;
+    color: var(--clr-reddish);
+}
+
+.myLink:hover {
+    color: var(--clr-reddish-light);
+}
+
+.myBtn {
+    background-color: var(--clr-reddish);
+    color: var(--clr-white);
+    padding: 0.8rem 2rem;
+    border-radius: 10px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.myBtn:hover {
+    background-color: var(--clr-reddish-light);
+    color: var(--clr-white);
+    border: 1px solid var(--clr-white);
+}
+
+.myBtn-light {
+    background-color: var(--clr-light);
+    color: var(--clr-blue);
+    border: 1px solid var(--clr-blue);
+    padding: 0.4rem 0.6rem;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.myBtn-light:hover {
+    background-color: var(--clr-blue-hover);
+    color: var(--clr-light);
+}
+
+.myBtn-lg {
+    background-color: var(--clr-blue);
+    color: var(--clr-white);
+    padding: 0.4rem 0.6rem;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: normal;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.myBtn-lg:hover {
+    background-color: var(--clr-blue-hover);
+}
+
+.nav-margin {
+    margin-top: 7rem;
+}

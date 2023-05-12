@@ -1,6 +1,6 @@
 package com.bpeproject.miniso.Entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,9 +28,13 @@ public class DailySale {
    private  double totalSales;
    private  int totalProducts;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date;
 
+   @Column(name = "date")
+   @DateTimeFormat(pattern = "yyyy-MM-dd")
+   private LocalDate date;
+   private int salesDay;
+   private int salesMonth;
+   private int salesYear;
     private double totalSalesWoGST;
     private double avgTransactionValue;
     
