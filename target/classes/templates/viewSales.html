@@ -63,19 +63,23 @@
         </div>
       </div>
     </nav>
+    
     <main class="container nav-margin">
+        <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+            <p th:text="${errorMessage}"></p>
+        </div>
         <section class="w-75 mx-auto text-white">
 
             <form th:action="@{/view-sales}" method="post" class="text-white my-4">
                 <form th:action="@{/view-sales}" method="post">
 
                     <label for="startDate">Start Date:</label>
-                    <input type="date" id="startDate" name="startDate" th:value="${startDate}" required>
+                    <input type="date" class="form-control" id="startDate" name="startDate" th:value="${startDate}" required>
 
                     <label for="endDate">End Date:</label>
-                    <input type="date" id="endDate" name="endDate" th:value="${endDate}" required>
+                    <input type="date" class="form-control" id="endDate" name="endDate" th:value="${endDate}" required>
 
-                    <div>
+                    <div style="margin-top: 20px; margin-bottom: 20px;">
                         <p>Interval:</p>
                         <input type="radio" id="daily" name="interval" value="daily" required>
                         <label for="daily">Daily</label><br>
@@ -88,7 +92,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="#" th:href="@{/admin/view-graphs}" class="btn btn-secondary">Reset</a>
+                    <a th:href="@{/view-sales}" class="btn btn-secondary">Reset</a>
 
                 </form>
 
