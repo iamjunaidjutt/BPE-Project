@@ -16,7 +16,7 @@
   <meta name="theme-color" content="#ffffff">
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet" />
   <link rel="stylesheet" href="../static/css/styles.css" />
   <title>Invoice</title>
@@ -24,38 +24,74 @@
 
 
 <body>
-  <h1>Invoice</h1>
+  <div class="d-flex justify-content-center mt-5">
+    <div class="card w-50 mx-auto shadow-sm">
+      <div class="card-body mx-4">
+        <div class="container">
+          <p class="my-5 mx-5" style="font-size: 30px;">Thank for your purchase</p>
+          <div class="row">
+            <ul class="list-unstyled">
+              <li class="text-black" th:text="${customer.name}"></li>
+              <li class="text-muted mt-1">Tel #<span class="text-black" th:text="${customer.phoneNumber}"></span></li>
+            </ul>
+            <hr>
+            <div class="col-xl-10">
+              <p>Total</p>
+            </div>
+            <div class="col-xl-2">
+              <p class="float-end">$<span th:text="${invoice.total}"></span>
+              </p>
+            </div>
+            <hr>
+          </div>
+          <div class="row">
+            <div class="col-xl-10">
+              <p>Discount Code</p>
+            </div>
+            <div class="col-xl-2">
+              <p class="float-end">$<span th:text="${invoice.discountCode}"></span>
+              </p>
+            </div>
+            <hr>
+          </div>
+          <div class="row">
+            <div class="col-xl-10">
+              <p>Discount</p>
+            </div>
+            <div class="col-xl-2">
+              <p class="float-end">$<span th:text="${invoice.discount}"></span>
+              </p>
+            </div>
+            <hr style="border: 2px solid black;">
+          </div>
+          <div class="row">
+            <div class="col-xl-10">
+              <p>Total with Discount</p>
+            </div>
+            <div class="col-xl-2">
+              <p class="float-end">$<span th:text="${invoice.totalWithDiscount}"></span>
+              </p>
+            </div>
+            <hr style="border: 2px solid black;">
+          </div>
+          <div class="row text-black">
 
-  <table>
-    <tr>
-      <th>Customer Name:</th>
-      <td th:text="${customer.name}"></td>
-    </tr>
-    <tr>
-      <th>Customer Phone Number:</th>
-      <td th:text="${customer.phoneNumber}"></td>
-    </tr>
-    <tr>
-      <th>Total:</th>
-      <td th:text="${invoice.total}"></td>
-    </tr>
-    <tr>
-      <th>Discount Code:</th>
-      <td th:text="${invoice.discountCode}"></td>
-    </tr>
-    <tr>
-      <th>Discount:</th>
-      <td th:text="${invoice.discount}"></td>
-    </tr>
-    <tr>
-      <th>Total with Discount:</th>
-      <td th:text="${invoice.totalWithDiscount}"></td>
-    </tr>
-    <tr>
-      <th>Total with GST:</th>
-      <td th:text="${invoice.totalWithGST}"></td>
-    </tr>
-  </table>
+            <div class="col-xl-12">
+              <p class="float-end fw-bold">Total with GST: $<span th:text="${invoice.totalWithGST}"></span>
+              </p>
+            </div>
+            <hr style="border: 2px solid black;">
+          </div>
+          <div class="text-center" style="margin-top: 90px;">
+            <a><u class="text-info">View in browser</u></a>
+            <p>All rights reserved by Miniso. </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 
 </html>
