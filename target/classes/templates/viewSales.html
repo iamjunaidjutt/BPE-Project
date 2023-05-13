@@ -83,16 +83,21 @@
                 <div style="margin-top: 70px;" th:if="${datesSelected}" class="graph-container text-white">
                     <img th:src="@{/view-sales/intervalRevenue}" alt="Interval Revenue Graph" />
                 </div>
-                <table class="table table-bordered table-striped text-white" th:if="${datesSelected}">
+
+                <table class="table table-bordered  text-white" th:if="${datesSelected}" style="margin-bottom:60px;" >
+                    
                     <thead class="text-white">
+                       
                         <tr>
                             <th>Interval</th>
                             <th>Revenue</th>
                             <th>% Change</th>
                             <th>% Change From Base (<span th:text="${intervalStats[0][0]}"></span>) </th>
+                       
                         </tr>
                     </thead>
                     <tbody class="text-white">
+                        <h2 style="margin-top:60px; margin-bottom:30px"> Comparison Table</h2>
                         <tr th:each="stat, statIndex : ${intervalStats}">
                             <td th:if="${interval} == 'daily'" th:text="${stat[0]}"></td>
                             <td th:if="${interval} == 'daily'" th:text="${stat[1]}"></td>
