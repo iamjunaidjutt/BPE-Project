@@ -75,114 +75,46 @@
   </head>
 
   <body>
-    <body>
-      <nav
-        class="navbar navbar-expand-lg bg-body-tertiary myBg-light fixed-top shadow"
-      >
-        <div class="container">
-          <a class="navbar-brand me-5" th:href="@{/home}">
-            <div class="d-flex">
-              <span class="myLink fw-bold fs-3 mt-2">Miniso</span>
-            </div>
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
-              <li class="nav-item mx-3">
-                <a
-                  class="myLink active"
-                  aria-current="page"
-                  th:href="@{/daily-entry}"
-                  >Daily Sales Entry</a
-                >
-              </li>
-              <li class="nav-item mx-3">
-                <a class="myLink" th:href="@{/view-sales}">View Sales</a>
-              </li>
-              <li class="nav-item mx-3">
-                <a class="myLink" th:href="@{/startdiscount}"
-                  >Discount System</a
-                >
-              </li>
-            </ul>
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary myBg-light fixed-top shadow"
+    >
+      <div class="container">
+        <a class="navbar-brand me-5" th:href="@{/home}">
+          <div class="d-flex">
+            <span class="myLink fw-bold fs-3 mt-2">Miniso</span>
           </div>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
+            <li class="nav-item mx-3">
+              <a
+                class="myLink active"
+                aria-current="page"
+                th:href="@{/daily-entry}"
+                >Daily Sales Entry</a
+              >
+            </li>
+            <li class="nav-item mx-3">
+              <a class="myLink" th:href="@{/view-sales}">View Sales</a>
+            </li>
+            <li class="nav-item mx-3">
+              <a class="myLink" th:href="@{/startdiscount}">Discount System</a>
+            </li>
+          </ul>
         </div>
-      </nav>
-      <main class="container nav-margin">
-        <section class="w-75 mx-auto">
-          <h1 class="text-white mt-5">Discount Programs</h1>
-          <form
-            th:action="@{/searchCode}"
-            method="GET"
-            class="d-flex my-4"
-            role="search"
-          >
-            <div class="input-group">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Search Discount Code"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                th:name="code"
-              />
-            </div>
-            <button type="submit" class="myBtn">
-              <box-icon name="search" color="#ffffff"></box-icon>
-            </button>
-          </form>
-          <p class="text-white">
-            Want to cancel?
-            <a th:href="@{/rejectDiscount}" class="myLink"> Click here</a>
-          </p>
-          <h3 class="text-white">All Discount Codes</h3>
-          <hr class="text-white" />
-          <table class="table table-striped text-white">
-            <thead>
-              <tr>
-                <th scope="col">Code</th>
-                <th scope="col">Discount Amount</th>
-                <th scope="col">Quantity Left</th>
-                <th scope="col">Validity</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr th:each="discount : ${discount}">
-                <td th:text="${discount.code}" class="text-white">Eid123</td>
-                <td th:text="${discount.amount}" class="text-white">50%</td>
-                <td th:text="${discount.quantity}" class="text-white">5</td>
-                <td
-                  th:text="${#dates.format(discount.validity, 'yyyy-MM-dd')}"
-                  class="text-white"
-                >
-                  26-12-2050
-                </td>
-                <td class="d-flex align-items-center">
-                  <a
-                    th:class="${discount.quantity == 0} ? 'disabled' : ''"
-                    th:style="${discount.quantity == 0} ? 'color: red;' : 'color: blue;'"
-                    th:href="@{/applydiscount{id}(id=${discount.id})}"
-                    class="btn myLink-bg btn-sm me-3 text-white"
-                    >Apply</a
-                  >
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </main>
-    </body>
+      </div>
+    </nav>
     <main class="container nav-margin">
       <section class="w-75 mx-auto">
         <h1 class="text-white mt-5">Searched Discount Codes</h1>
