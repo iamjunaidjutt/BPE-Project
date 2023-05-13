@@ -37,6 +37,12 @@ public class AppController {
         return "getCustomerInfo.html";
     }
 
+    @GetMapping("/home")
+    public String home(Model model) {
+
+        return "index.html";
+    }
+
     @GetMapping("/discountprogram")
     public String displayDiscountProgram(@RequestParam("name") String name,
             @RequestParam("phoneNumber") String phoneNumber, @RequestParam("invoice") Long invoice, Model model) {
