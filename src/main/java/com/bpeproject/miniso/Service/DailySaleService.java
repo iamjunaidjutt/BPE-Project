@@ -135,7 +135,7 @@ public class DailySaleService {
         Random rand = new Random();
 
         for (int i = 0; i < numSales; i++) {
-            // Generate a random date in the past 2 years
+            // Generate a random date in the past 4 years
             long minDay = LocalDate.of(2020, 1, 1).toEpochDay();
             long maxDay = LocalDate.now().toEpochDay();
             long randomDay = minDay + rand.nextInt((int) (maxDay - minDay));

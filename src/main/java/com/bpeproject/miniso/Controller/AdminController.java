@@ -49,6 +49,11 @@ public class AdminController {
     @Autowired
     DailySaleService dailySaleService;
 
+
+    @GetMapping("")
+    public String homeGet(){
+        return "home";
+    }
     @GetMapping("/daily-entry")
     public String dailyEntryGet(Model model) {
         model.addAttribute("dailySale", new DailySale());

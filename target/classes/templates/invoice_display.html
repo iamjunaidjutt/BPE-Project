@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Invoice</title>
-  </head>
-  <body>
-    <h1>Invoice</h1>
 
-    <table>
-      <tr>
-        <th>Customer Name:</th>
-        <td th:text="${customer.name}"></td>
-      </tr>
-      <tr>
-        <th>Customer Phone Number:</th>
-        <td th:text="${customer.phoneNumber}"></td>
-      </tr>
-      <tr>
-        <th>Total:</th>
-        <td th:text="${invoice.total}"></td>
-      </tr>
-      <tr>
-        <th>Discount Code:</th>
-        <td th:text="${invoice.discountCode}"></td>
-      </tr>
-      <tr>
-        <th>Discount:</th>
-        <td th:text="${invoice.discount}"></td>
-      </tr>
-      <tr>
-        <th>Total with Discount:</th>
-        <td th:text="${invoice.totalWithDiscount}"></td>
-      </tr>
-      <tr>
-        <th>Total with GST:</th>
-        <td th:text="${invoice.totalWithGST}"></td>
-      </tr>
-    </table>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Invoice</title>
+</head>
+
+<body>
+  <h1>Invoice</h1>
+
+  <table>
+    <tr>
+      <th>Customer Name:</th>
+      <td th:text="${customer.name}"></td>
+    </tr>
+    <tr>
+      <th>Customer Phone Number:</th>
+      <td th:text="${customer.phoneNumber}"></td>
+    </tr>
+    <tr>
+      <th>Total:</th>
+      <td th:text="${invoice.total}"></td>
+    </tr>
+    <tr>
+      <th>Discount Code:</th>
+      <td th:text="${invoice.discountCode}"></td>
+    </tr>
+    <tr>
+      <th>Discount:</th>
+      <td th:text="${invoice.discount}"></td>
+    </tr>
+    <tr>
+      <th>Total with Discount:</th>
+      <td th:text="${invoice.totalWithDiscount}"></td>
+    </tr>
+    <tr>
+      <th>Total with GST:</th>
+      <td th:text="${invoice.totalWithGST}"></td>
+    </tr>
+  </table>
+</body>
+
 </html>
