@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bpeproject.miniso.Entity.Customer;
@@ -108,4 +110,37 @@ public class AppController {
 
         return "invoice_display.html";
     }
+
+    @GetMapping("/addmore")
+    public String addMoreDiscount(Model model) {
+
+        Discount newDiscountP = new Discount();
+
+        model.addAttribute("newDiscountP", newDiscountP);
+
+        return "addDiscount.html";
+    }
+
+    @PostMapping("/addmore")
+    public String addMoreDiscountPost(@ModelAttribute("newDiscountP") Discount newDiscountP, Model model) {
+
+        discountService.save(newDiscountP);
+
+        return "redirect:/home";
+    }
+
+    // @PostMapping("/addmore")
+    // public String addMoreDiscountPost(Model model, @RequestParam("amount") double
+    // amount,
+    // @RequestParam("discountCode") String discountCode, @RequestParam("quantity")
+    // int quantity,
+    // @RequestParam("validity") Date validity) {
+
+    // Discount newDiscountP = new Discount(discountCode, amount, quantity,
+    // validity);
+
+    // discountService.save(newDiscountP);
+
+    // return "redirect:/home";
+    // }
 }

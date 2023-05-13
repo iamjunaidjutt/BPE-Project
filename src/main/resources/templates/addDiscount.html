@@ -118,7 +118,12 @@
     <main class="container my-5 nav-margin">
       <section class="w-75 mx-auto">
         <h1 class="text-white mt-5">Add Discount</h1>
-        <form class="text-white my-4">
+        <form
+          th:action="@{/addmore}"
+          th:object="${newDiscountP}"
+          method="POST"
+          class="text-white my-4"
+        >
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Amount</label>
             <input
@@ -126,7 +131,8 @@
               class="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
-              placeholder="Name"
+              placeholder="Amount"
+              th:field="*{amount}"
             />
           </div>
           <div class="mb-3">
@@ -138,19 +144,19 @@
               class="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
-              placeholder="Phone Number"
+              placeholder="Discount Code"
+              th:field="*{code}"
             />
           </div>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label"
-              >Quantity</label
-            >
+            <label for="exampleInputEmail1" class="form-label">Quantity</label>
             <input
               type="number"
               class="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
-              placeholder="Discount Code"
+              placeholder="Quantity"
+              th:field="*{quantity}"
             />
           </div>
           <div class="mb-3">
@@ -162,7 +168,8 @@
               class="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
-              placeholder="Invoice Bill"
+              placeholder="Validating Date"
+              th:field="*{validity}"
             />
           </div>
           <button type="submit" class="myBtn">Submit</button>
