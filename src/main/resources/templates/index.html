@@ -121,10 +121,13 @@
   <main class="container">
     <div class="d-flex justify-content-center align-items-center w-100 vh-100">
       <div class="text-center w-50 text-white">
-        <h1 class="fs-1 my-4">Welcome Back!</h1>
-        <p class="lead my-4">Cover is a one-page template for building simple and beautiful home pages.
-          Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-        <a href="https://miniso.pk/" target="_blank" class="myBtn fs-4 shadow-sm">Learn more</a>
+        <a th:href="@{/daily-entry}" target="_blank" class="myBtn fs-4 shadow-sm">Daily Sales Entry</a>
+      </div>
+      <div class="text-center w-50 text-white">
+        <a th:href="@{/view-sales}" target="_blank" class="myBtn fs-4 shadow-sm">View Sales</a>
+      </div>
+      <div class="text-center w-50 text-white">
+        <a th:href="@{/startdiscount}" target="_blank" class="myBtn fs-4 shadow-sm">Discount System</a>
       </div>
     </div>
     </div>
